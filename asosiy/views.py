@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets
 from .serializer import *
 # Create your views here.
@@ -50,6 +51,7 @@ class AlbomModelViewSet(viewsets.ModelViewSet):
     serializer_class = AlbomSerializer
 
 class QoshiqchiModelViewSet(viewsets.ModelViewSet):
+    qidiruv = request.query_params.get('qidiruv')
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['ism', 'davlat']
     ordering_fields = ['tugilgan_yil']
